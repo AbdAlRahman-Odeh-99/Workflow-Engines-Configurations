@@ -1,0 +1,11 @@
+sudo apt-get -y update
+sudo apt-get -y install \
+       libyaml-dev \
+       python-numpy \
+       zip
+sudo apt-get autoremove -y
+sudo apt-get clean -y
+
+sudo pip install hftools==0.0.6
+
+Add it to PATH

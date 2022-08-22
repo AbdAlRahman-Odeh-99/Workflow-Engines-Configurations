@@ -1,0 +1,14 @@
+# Installing Luigi
+pip install luigi
+# Running luigi
+
+export PYTHONPATH="$PYTHONPATH:<directory where hello_luigi.py resides>"	//export PYTHONPATH="$PYTHONPATH:."
+
+luigid //Run server
+
+python3 first_example.py //Run flow
+
+
+# With UI
+python3 first_example.py --local-schedule //Run flow then go to localhost:8082
+
