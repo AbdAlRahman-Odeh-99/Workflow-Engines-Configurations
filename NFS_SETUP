@@ -1,0 +1,29 @@
+Source: https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/04-demo2/index.html
+
+# Set-up NFS service for the disk
+wget https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/files/001-nfs-server.yaml
+kubectl apply -n argo -f 001-nfs-server.yaml
+
+# Set-up NFS service, to access the server
+wget https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/files/002-nfs-server-service.yaml
+kubectl apply -n argo -f 002-nfs-server-service.yaml
+
+# Get IP
+kubectl get -n argo svc nfs-server |grep ClusterIP | awk '{ print $3; }'
+
+# Create PV
+wget https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/files/003-pv.yaml
+vim 003-pv.yaml # Insert the IP Address
+
+# Deploy
+kubectl apply -f 003-pv.yaml
+
+# Check
+kubectl get pv
+
+# PVC
+wget https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/files/003-pvc.yaml
+kubectl apply -n argo -f 003-pvc.yaml
+
+# Check
+kubectl get pvc -n argo
